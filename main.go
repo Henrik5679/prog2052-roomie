@@ -46,7 +46,7 @@ func templatePage (w http.ResponseWriter, r *http.Request) {
 
     walkFilesystem(".")
 
-    tmpl, err := template.ParseFiles("Frontend/index.tmpl")
+    tmpl, err := template.ParseFiles("presentation/index.tmpl")
     if err != nil { panic(err) }
     err = tmpl.Execute(w, Homepage)
     if err != nil { panic(err) }
@@ -64,7 +64,7 @@ func defaultHandler (w http.ResponseWriter, r *http.Request) {
         http.NotFound(w, r)
         return
     }
-    tmpl, err := template.ParseFiles(filepath.Join("Frontend", "index.tmpl")) // TODO it *should* just be connected to that "Frontend" is root, but that's not the case...
+    tmpl, err := template.ParseFiles(filepath.Join("presentation", "index.tmpl")) // TODO it *should* just be connected to that "presentation" is root, but that's not the case...
     if err != nil {
         log.Println("Could not parse filesystem. ERROR:", err)
         http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -85,8 +85,8 @@ func main() {
     // --- Parse File System ---
     // TODO Got this part of the code from perplexity.ai
     // I'd like to investigate for how it works
-    fs := http.FileServer(http.Dir("Frontend"))
-    http.Handle("/Frontend/", http.StripPrefix("/Frontend/", fs))
+    fs := http.FileServer(http.Dir("presentation"))
+    http.Handle("/presentation/", http.StripPrefix("/presentation/", fs))
 
     // --- Start Server ---
     log.Println("Starting server on port 8080...")

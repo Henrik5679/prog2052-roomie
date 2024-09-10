@@ -1,0 +1,16 @@
+# gitignore
+# See this for more info:
+# https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#_ignoring
+
+# Binary Executables
+/main
+
+# Build Artifacts
+*~
+*.bak
+.idea
+*.swo
+*.swp
+
+# Other Files
+.secrets/

@@ -5,7 +5,7 @@ import (
     "log"
     "net/http"
     "os"
-    "webpage/internal"
+    "roomie/internal"
 )
 
 func main() {

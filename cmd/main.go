@@ -11,7 +11,6 @@ import (
 func main() {
     // --- Establish Handler Functions ---
     http.HandleFunc(internal.PATH_DEFAULT,  internal.DefaultHandler)
-    http.HandleFunc(internal.PATH_TEMPLATE, internal.TemplateHandler)
 
     // --- Parse File System ---
     // TODO Got this part of the code from perplexity.ai

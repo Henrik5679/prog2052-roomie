@@ -10,9 +10,8 @@ import (
 
 func main() {
     // --- Establish Handler Functions ---
-    // TODO: have the PATHs be constants
-    http.HandleFunc("/",         internal.DefaultHandler)
-    http.HandleFunc("/template", internal.TemplateHandler)
+    http.HandleFunc(internal.PATH_DEFAULT,  internal.DefaultHandler)
+    http.HandleFunc(internal.PATH_TEMPLATE, internal.TemplateHandler)
 
     // --- Parse File System ---
     // TODO Got this part of the code from perplexity.ai

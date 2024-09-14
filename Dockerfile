@@ -15,12 +15,13 @@ RUN go mod download
 
 # Move source code to container
 COPY presentation ./presentation/
-COPY main.go      ./
+COPY internal     ./internal/
+COPY cmd          ./cmd/
 
 # Compile binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o /program
+RUN CGO_ENABLED=0 GOOS=linux go build -o /server /source/cmd
 
 # For some reason no need to expose port 8080
 #EXPOSE $PORT
 
-CMD ["/program"]
+CMD ["/server"]

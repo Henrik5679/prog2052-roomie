@@ -45,10 +45,29 @@ func DefaultHandler (w http.ResponseWriter, r *http.Request) {
         return
     }
     Homepage.DateTime = time.Now().Format(time.UnixDate)
-    walkFilesystem(".") // Just for debuggin
+    // walkFilesystem(".") // Just for debuggin
     err = tmpl.Execute(w, Homepage)
     if err != nil {
+        // TODO proper error
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
 }
 
+
+func FormHandler (w http.ResponseWriter, r *http.Request) {
+    log.Println("Serving a client on " + r.URL.Path)
+    var Formpage Page = Page {
+        Title: "My Form for Simple Data Handling",
+    }
+    tmpl, err := template.ParseFiles(filepath.Join("presentation", "form.tmpl"))
+    if err != nil {
+        log.Println("Could not parse filesystem. ERROR:", err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    err = tmpl.Execute(w, Formpage)
+    if err != nil {
+        // TODO proper error
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+}

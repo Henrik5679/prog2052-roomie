@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}}</title>
+</head>
+<body>
+<!-- https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data -->
+
+<h1>Enter a Name:</h1>
+<!-- Example adapted from w3schools and a perplexity.ai example -->
+<form action="/submit-input" method="post">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" value="Richard Suxby" required>
+  <input type="submit" value="Submit">
+</form>
+
+<!--
+<h1>Submit Your Input</h1>
+<form action="/submit-input" method="post">
+    <label for="userInput">Your Input:</label>
+    <input type="text" id="userInput" name="userInput" required>
+    <input type="submit" value="Submit">
+</form>
+-->
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/submit-input".</p>
+
+</body>
+</html>
+

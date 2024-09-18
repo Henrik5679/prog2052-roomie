@@ -71,3 +71,32 @@ func FormHandler (w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
 }
+
+func UserInputHandler (w http.ResponseWriter, r *http.Request) {
+    // TODO: Should have the form action point to the same page it came
+    // from, and then have it do relevant actions depending on whether it
+    // receives a POST/GET request.
+    log.Println("Serving a client on " + r.URL.Path)
+    switch r.Method {
+      // Hitting any case means it doesn't go to default, btw
+      // It's a little different from C++ in this way
+      case http.MethodGet:  // --- Received  GET Request ---
+      case http.MethodHead: // --- Received HEAD Request ---
+      case http.MethodPost: // --- Received POST Request ---
+        // TODO do proper security; validate, sanitize, et.c.
+        // TODO may want to encapsulate form handling
+        err := r.ParseForm()
+        if err != nil {
+            http.Error(w, err.Error(), http.StatusBadRequest)
+            return
+        }
+        fname := r.FormValue("fname")
+        log.Println("Got", fname)
+        // Put the data in the database
+
+      default:  // --- Received Any Other Request ---
+        http.Error(w,  "Method '"+r.Method+"' not supported.", http.StatusNotImplemented)
+        log.Println(w, "Method '"+r.Method+"' not supported.", http.StatusNotImplemented)
+        return
+    }
+}

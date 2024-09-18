@@ -10,8 +10,10 @@ import (
 
 func main() {
     // --- Establish Handler Functions ---
-    http.HandleFunc(internal.PATH_DEFAULT,  internal.DefaultHandler)
-    http.HandleFunc(internal.PATH_FORM,     internal.FormHandler)
+    // TODO: Every page has proper header initialization and such
+    http.HandleFunc(internal.PATH_DEFAULT,   internal.DefaultHandler)
+    http.HandleFunc(internal.PATH_FORM,      internal.FormHandler)
+    http.HandleFunc(internal.PATH_USERINPUT, internal.UserInputHandler)
 
     // --- Parse File System ---
     // TODO Got this part of the code from perplexity.ai

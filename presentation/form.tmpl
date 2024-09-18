@@ -8,7 +8,7 @@
 
 <h1>Enter a Name:</h1>
 <!-- Example adapted from w3schools and a perplexity.ai example -->
-<form action="/submit-input" method="post">
+<form action="/submit-input" method="POST"> <!-- TODO: should be a const, same as Go. Maybe use env variables. -->
   <label for="fname">First name:</label>
   <input type="text" id="fname" name="fname" value="Richard Suxby" required>
   <input type="submit" value="Submit">
@@ -23,8 +23,10 @@
 </form>
 -->
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/submit-input".</p>
+<p>
+    If you click the "Submit" button, the form-data will be sent to a page
+    called "/submit-input".
+</p>
 
 </body>
 </html>
-
